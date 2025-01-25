@@ -30,7 +30,7 @@ class Predictor:
 
     def setup(self):
         """Load the model into memory to make running multiple predictions efficient"""
-        model_names = ["tiny", "base", "small", "medium", "large-v1", "large-v2", "large-v3"]
+        model_names = ["base", "large-v3", "shhossain/whisper-large-bn-v2-ct2", "deepdml/faster-whisper-large-v3-turbo-ct2", "turbo"]
         with ThreadPoolExecutor() as executor:
             for model_name, model in executor.map(self.load_model, model_names):
                 if model_name is not None:
@@ -161,7 +161,7 @@ def format_segments(format, segments):
         return "\n".join([segment.text.lstrip() for segment in segments])
     elif format == "srt":
         return write_srt(segments)
-    
+
     return write_vtt(segments)
 
 
