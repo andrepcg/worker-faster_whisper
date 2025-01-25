@@ -22,7 +22,7 @@ class Predictor:
     def load_model(self, model_name):
         """ Load the model from the weights folder. """
         loaded_model = WhisperModel(
-            model_name,
+            "faster-whisper-large-v3-turbo-ct2" if model_name == "large-v3-turbo-ct2" else model_name,
             device="cuda" if rp_cuda.is_available() else "cpu",
             compute_type="float16" if rp_cuda.is_available() else "int8")
 

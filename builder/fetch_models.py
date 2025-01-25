@@ -21,10 +21,10 @@ def load_model(selected_model):
                 if selected_model == "large-v3-turbo-ct2":
                     repo_id = "deepdml/faster-whisper-large-v3-turbo-ct2"
                     local_dir = "faster-whisper-large-v3-turbo-ct2"
-                    m = snapshot_download(repo_id=repo_id, local_dir=local_dir, repo_type="model")
-                    loaded_model = WhisperModel(m, device="cpu", compute_type="int8")
+                    snapshot_download(repo_id=repo_id, local_dir=local_dir, repo_type="model")
+                    loaded_model = WhisperModel(local_dir, device="cpu", compute_type="int8")
                 else:
-                    loaded_model = WhisperModel(selected_model, device="cuda", compute_type="int8")
+                    loaded_model = WhisperModel(selected_model, device="cpu", compute_type="int8")
             except (AttributeError, OSError):
                 continue
 

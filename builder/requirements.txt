@@ -1,4 +1,4 @@
 runpod~=1.7.0
-huggingface_hub==0.19.4
-faster-whisper==1.1.1
+huggingface_hub
+faster-whisper @ git+https://github.com/SYSTRAN/faster-whisper.git
 ctranslate2==4.4.0
