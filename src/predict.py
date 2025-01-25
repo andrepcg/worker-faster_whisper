@@ -30,7 +30,7 @@ class Predictor:
 
     def setup(self):
         """Load the model into memory to make running multiple predictions efficient"""
-        model_names = ["base", "large-v3", "shhossain/whisper-large-bn-v2-ct2", "deepdml/faster-whisper-large-v3-turbo-ct2", "turbo"]
+        model_names = ["large-v3-turbo-ct2"]
         with ThreadPoolExecutor() as executor:
             for model_name, model in executor.map(self.load_model, model_names):
                 if model_name is not None:
@@ -39,7 +39,7 @@ class Predictor:
     def predict(
         self,
         audio,
-        model_name="base",
+        model_name="large-v3-turbo-ct2",
         transcription="plain_text",
         translate=False,
         translation="plain_text",
